@@ -123,7 +123,7 @@ X = reshape(A, img_size(1) * img_size(2), 3);
 
 % Run your K-Means algorithm on this data
 % You should try different values of K and max_iters here
-K = 3; 
+K = 50; 
 max_iters = 10;
 
 % When using K-Means, it is important the initialize the centroids
@@ -159,15 +159,16 @@ X_recovered = centroids(idx,:);
 X_recovered = reshape(X_recovered, img_size(1), img_size(2), 3);
 
 % Display the original image 
-subplot(1, 2, 1);
-imagesc(A); 
-title('Original');
+% subplot(1, 2, 1);
+% imagesc(A); 
+% title('Original');
 
 % Display compressed image side by side
-subplot(1, 2, 2);
+% subplot(1, 2, 2);
 imagesc(X_recovered)
 title(sprintf('Compressed, with %d colors.', K));
 
+imwrite(mat2gray(X_recovered), '1.jpg'); %保存压缩后的图品
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
